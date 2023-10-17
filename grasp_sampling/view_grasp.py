@@ -86,7 +86,6 @@ def draw(DATA_ROOT,STAGE_ID,MODE,GROUND_PLANE,GRIPPER,SYMBOL):
             
             bad_candidates = [sample for sample in candidate_simulation[object_index]["grasp_samples"] if sample["collision_quality"]== 1 and sample["simulation_quality"] == 0]
             good_candidates = [sample for sample in candidate_simulation[object_index]["grasp_samples"] if sample["collision_quality"]== 1 and sample["simulation_quality"] == 1]
-            good_candidates = [sample for sample in candidate_simulation[object_index]["grasp_samples"] if sample["collision_quality"]== 1 and sample["simulation_quality"] == 1]
 
             
             #print(len(grasp_samples))
