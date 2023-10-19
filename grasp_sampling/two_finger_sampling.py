@@ -5,10 +5,10 @@ import argparse
 base_dir = Path(__file__).parent
 parser = argparse.ArgumentParser(description='Sim-Suction create_point_cloud_and_seal_evaluation')
 parser.add_argument('--headless', type=bool, default=True, help='headless')#make it True when gerneate dataset 
-parser.add_argument('--debug_draw', type=bool, default=False, help='debug draw')#make it False when gerneate dataset 
+parser.add_argument('--debug_draw', type=bool, default=True, help='debug draw')#make it False when gerneate dataset 
 parser.add_argument('--pcl_path', type=str, default=(base_dir.parent / "pointcloud_train").as_posix(), help='point cloud path')
 parser.add_argument('--data_path', type=str, default=(base_dir.parent / "synthetic_data").as_posix(), help='data path')
-parser.add_argument('--instanceable_flag', type=bool, default=True, help='use textureless instanceable usd to increase simulation speed')
+parser.add_argument('--instanceable_flag', type=bool, default=False, help='use textureless instanceable usd to increase simulation speed')
 parser.add_argument('--seg_dic_path', type=str, default=(base_dir.parent / "seg_dic.pkl").as_posix(), help='seg_dic path')
 parser.add_argument('--save_pcd_flag', type=bool, default=False, help='Save each objects as pcd file')
 parser.add_argument('--save_pkl_flag', type=bool, default=True, help='Save seal evaluation as pkl file')
@@ -367,21 +367,21 @@ def sample_pinch_grasp (rotation_angle,suction_translation,suction_rotation_matr
 
             finger_left_T = np.eye(4)
             #T2[:3, :3] = R (-1.4/2)-(10/2)
-            finger_left_T[0:3, 3] = [(-1.4/2)-(10/2),0,5.5/2]
+            finger_left_T[0:3, 3] = [(-1.5/2)-(10/2),0,5.5/2]
             finger_left_rotation=Rotation.from_matrix(box_base_T[:3, :3]).as_quat()
-            finger_left_extent=[1.4/2,2.5/2,5.5/2]
+            finger_left_extent=[1.5/2,2.5/2,7/2]
 
             finger_right_T = np.eye(4)
             #T2[:3, :3] = R
-            finger_right_T[0:3, 3] =  [(1.4/2)+(10/2),0,5.5/2]
+            finger_right_T[0:3, 3] =  [(1.5/2)+(10/2),0,5.5/2]
             finger_right_rotation=Rotation.from_matrix(box_base_T[:3, :3]).as_quat()
-            finger_right_extent=[1.4/2,2.5/2,5.5/2]
+            finger_right_extent=[1.5/2,2.5/2,7/2]
 
             box_middle_T = np.eye(4)
             #T2[:3, :3] = R
             box_middle_T[0:3, 3] = [0,0,5.5/2]
             box_middle_rotation=Rotation.from_matrix(box_base_T[:3, :3]).as_quat()
-            box_middle_extent=[1,1,0.5]
+            box_middle_extent=[0.5,0.5,0.5]
 
 
 
@@ -646,7 +646,6 @@ class generate_pcl_and_seal():
             
                 # For each index in the index list
                 np.random.shuffle(FPS_index)
-                passed_samples = []
 
                 for index in FPS_index:
                     #####################compute_darboux_frame###################################################################
@@ -654,7 +653,7 @@ class generate_pcl_and_seal():
                     t_ori, t_translate, R,normal_vector,normal_vector_opposite=compute_darboux_frame(points, index, kdtree, normals)
                     # Sample approach directions within a cone around the normal vector
 
-                    sampled_approach_directions = sample_cone(normal_vector, 6, 45)
+                    sampled_approach_directions = sample_cone(normal_vector, 3, 10)
 
                     # Compute the corresponding rotation matrices for each sampled direction
                     sampled_rotations = compute_sampled_rotations(R, sampled_approach_directions)
@@ -674,13 +673,13 @@ class generate_pcl_and_seal():
                    
                     ###############################################################################
                     
-                    standoff_depths = np.linspace(1, 7, num=6) 
+                    standoff_depths = np.linspace(1, 7, num=7) 
 
 
                     if collision_flag== False:
                         #print("collision pass")
                         #####################seal evaluation###################################################################
-                        pinch_grasp_samples=6
+                        pinch_grasp_samples=12
                         # Create a gripper object
                         for sampled_rotations_j in range(len(sampled_rotations)): 
                             for pinch_grasp_samples_j in range(pinch_grasp_samples):

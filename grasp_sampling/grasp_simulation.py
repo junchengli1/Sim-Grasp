@@ -123,10 +123,10 @@ def main_simulation_loop(break_out_flag,world,stage_ind, object_number, num_envs
         groundPlane_prim = stage.GetPrimAtPath("/World/defaultGroundPlane")
         xform_prim = XFormPrim(get_prim_path(groundPlane_prim))
         step_ind=0
-        for mm in range(25):
+        for mm in range(100):
                         xform_prim.set_world_pose(np.array([0,0,step_ind]))
                         world.step(render=not args.headless)
-                        step_ind-=0.8
+                        step_ind-=0.2
 
         for i in range(num_envs):
             
@@ -176,7 +176,7 @@ class EnvironmentSetup:
         self.world = world
 
     def setup_environment(self):
-        set_camera_view([250, 250, 550], [0.0, 0.0, 0.0])
+        set_camera_view([150, 150, 550], [0.0, 0.0, 0.0])
         self.world.scene.clear()
         delete_prim("/World/envs")
         self.world.scene.add_default_ground_plane()
@@ -190,6 +190,8 @@ class EnvironmentSetup:
                     pass
                 else:
                     utils.setRigidBody(prim, "convexDecomposition", True)
+        
+        
         xform_prim = XFormPrim("/World/defaultGroundPlane")
             
         # Adjust the properties of the default ground plane
@@ -277,12 +279,12 @@ def sim_suction_simulation():
             # Create a new simulation stage
             create_new_stage() 
 
-            world = World(stage_units_in_meters=0.01, physics_dt=0.01,rendering_dt=0.01,physics_prim_path="/physicsScene",backend="numpy")
+            world = World(stage_units_in_meters=0.01, physics_dt=0.01,rendering_dt=0.01,physics_prim_path="/physicsScene",backend="numpy",sim_params={"gpu_found_lost_pairs_capacity":2**21,"gpu_max_rigid_patch_count":5 * 2**15,"gpu_max_rigid_contact_count": 2**23})
             #world.get_physics_context().enable_gpu_dynamics(True)
             
-            world.get_physics_context().enable_flatcache(True)
+            world.get_physics_context().enable_fabric(True)
             
-            carb.settings.get_settings().set("/persistent/omnihydra/useSceneGraphInstancing", True)
+            #carb.settings.get_settings().set("/persistent/omnihydra/useSceneGraphInstancing", True)
 
             env_setup = EnvironmentSetup(world)
             env_setup.setup_environment()
@@ -328,7 +330,14 @@ def sim_suction_simulation():
 
             #asset_path = "/media/juncheng/Disk4T/Sim-Grasp/Props/fetch.usd"
             #add_reference_to_stage(usd_path=asset_path, prim_path="/World/envs/env_0/Robot")
-
+            stage=omni.usd.get_context().get_stage()
+            #curr_prim = stage.GetPrimAtPath(f"/World/envs/env_0/stage_{stage_ind}_instanceable/objects")
+            #for prim in Usd.PrimRange(curr_prim):
+                #if prim.IsA(UsdGeom.Xform):
+                    #utils.removeRigidBody(prim)
+                   # utils.setRigidBody(prim, "none", False)
+               # elif prim.IsA(UsdGeom.Mesh):
+                   # utils.setCollider(prim, approximationShape="convexDecomposition")
     
             # Clone the scene
             cloner.define_base_env("/World/envs")

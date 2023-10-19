@@ -346,7 +346,7 @@ def compute_darboux_frame(points, index, kdtree, normals):
     query = points[index,:]
 
     # Search for neighbors within a radius of 1.5 around the point
-    (_, indices, _) = kdtree.search_radius_vector_3d(query,1.5)
+    (_, indices, _) = kdtree.search_radius_vector_3d(query,0.01)
     
     # Check if indices are out of bounds
     if np.any(np.asarray(indices) >= len(normals)):

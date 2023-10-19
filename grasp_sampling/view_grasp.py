@@ -56,7 +56,9 @@ def draw(DATA_ROOT,STAGE_ID,MODE,GROUND_PLANE,GRIPPER,SYMBOL):
             candidate_overlap= pickle.load(f)
         for object_index in candidate_overlap.keys():
             grasp_samples=candidate_overlap[object_index]["grasp_samples"]
-            print(len(grasp_samples))
+            good_candidates = [sample for sample in candidate_overlap[object_index]["grasp_samples"] if sample["collision_quality"]== 1]
+
+            print(len(good_candidates))
             for i in range(len(grasp_samples)):
 
                 suction_translation=grasp_samples[i]["suction_translation"]
@@ -88,7 +90,7 @@ def draw(DATA_ROOT,STAGE_ID,MODE,GROUND_PLANE,GRIPPER,SYMBOL):
             good_candidates = [sample for sample in candidate_simulation[object_index]["grasp_samples"] if sample["collision_quality"]== 1 and sample["simulation_quality"] == 1]
 
             
-            #print(len(grasp_samples))
+            print(len(good_candidates))
             for i in range(len(good_candidates)):
 
                 suction_translation=good_candidates[i]["suction_translation"]
@@ -116,8 +118,8 @@ def draw(DATA_ROOT,STAGE_ID,MODE,GROUND_PLANE,GRIPPER,SYMBOL):
                 T[2, 3] = suction_translation[2]
                 hand_mesh.paint_uniform_color([1, 0, 0])
               
-                mesh_t = copy.deepcopy(hand_mesh).transform(T)
-                display.append(mesh_t)
+                #mesh_t = copy.deepcopy(hand_mesh).transform(T)
+                #display.append(mesh_t)
 
     for i in pcd_list:
 
