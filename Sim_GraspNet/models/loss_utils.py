@@ -1,6 +1,3 @@
-""" Tools for loss computation.
-    Author: chenxi-wang
-"""
 
 import torch
 import numpy as np
