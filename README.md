@@ -24,3 +24,12 @@
 Use the [`two_finger_sampling_angle_aug.py`](grasp_sampling/two_finger_sampling_angle_aug.py) script to sample grasp candidates and check collisions.
 
 Use the [`grasp_simulation.py`](grasp_sampling/grasp_simulation.py) script to perform dynamic evaluation.
+
+
+## Sim-GraspNet
+
+Use code under Sim_GraspNet for model construction (Codes to be cleaned).
+
+## Sim-Grasp-Policy
+
+Use code under Sim_Grasp-policy for grasping policy (Codes to be cleaned).
