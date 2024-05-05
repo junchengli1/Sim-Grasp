@@ -1,0 +1,3 @@
+# ninja log v5
+0	10622	1697998502634025017	/media/juncheng/ubuntu_data1/Sim-Suction-API/Sim-Suction-Pointnet/sim_suction_model/utils/pn2_utils/functions/build/temp.linux-x86_64-cpython-39/csrc/gather_knn_kernel.o	74ad97922198b805
+0	14501	1697998506505990012	/media/juncheng/ubuntu_data1/Sim-Suction-API/Sim-Suction-Pointnet/sim_suction_model/utils/pn2_utils/functions/build/temp.linux-x86_64-cpython-39/csrc/main.o	5cb8bc8fd01afa53

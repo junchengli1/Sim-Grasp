@@ -1,0 +1,11 @@
+# ninja log v5
+0	9737	1695836978916075722	/media/juncheng/ubuntu_data1/Sim-Suction-API/Sim-Suction-Pointnet/multi_model/utils/pn2_utils/build/temp.linux-x86_64-cpython-39/csrc/ball_query_kernel.o	ad5b53eb7bf757ef
+1	9870	1695836979052074702	/media/juncheng/ubuntu_data1/Sim-Suction-API/Sim-Suction-Pointnet/multi_model/utils/pn2_utils/build/temp.linux-x86_64-cpython-39/csrc/sampling_kernel.o	d6f0edb10b328673
+0	10039	1695836979220073443	/media/juncheng/ubuntu_data1/Sim-Suction-API/Sim-Suction-Pointnet/multi_model/utils/pn2_utils/build/temp.linux-x86_64-cpython-39/csrc/grouping_kernel.o	c0af40852b78ed32
+0	10407	1695836979588070684	/media/juncheng/ubuntu_data1/Sim-Suction-API/Sim-Suction-Pointnet/multi_model/utils/pn2_utils/build/temp.linux-x86_64-cpython-39/csrc/interpolate_kernel.o	f24357a9f005deb
+0	12580	1695836981756054434	/media/juncheng/ubuntu_data1/Sim-Suction-API/Sim-Suction-Pointnet/multi_model/utils/pn2_utils/build/temp.linux-x86_64-cpython-39/csrc/main.o	b34d1de871659346
+2	10988	1696529848856688247	/media/juncheng/ubuntu_data1/Sim-Suction-API/Sim-Suction-Pointnet/sim_suction_model/utils/pn2_utils/build/temp.linux-x86_64-cpython-39/csrc/ball_query_kernel.o	7499790571a3f80b
+2	11244	1696529849108687099	/media/juncheng/ubuntu_data1/Sim-Suction-API/Sim-Suction-Pointnet/sim_suction_model/utils/pn2_utils/build/temp.linux-x86_64-cpython-39/csrc/sampling_kernel.o	8a87b5513319a4b
+2	11364	1696529849228686553	/media/juncheng/ubuntu_data1/Sim-Suction-API/Sim-Suction-Pointnet/sim_suction_model/utils/pn2_utils/build/temp.linux-x86_64-cpython-39/csrc/grouping_kernel.o	4da16895cb381131
+2	11788	1696529849656684603	/media/juncheng/ubuntu_data1/Sim-Suction-API/Sim-Suction-Pointnet/sim_suction_model/utils/pn2_utils/build/temp.linux-x86_64-cpython-39/csrc/interpolate_kernel.o	a41f6112cf93a57
+2	15864	1696529853724666066	/media/juncheng/ubuntu_data1/Sim-Suction-API/Sim-Suction-Pointnet/sim_suction_model/utils/pn2_utils/build/temp.linux-x86_64-cpython-39/csrc/main.o	edcff0a2e22c004b

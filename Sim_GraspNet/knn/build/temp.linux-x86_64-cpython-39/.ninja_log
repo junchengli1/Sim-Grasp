@@ -1,0 +1,4 @@
+# ninja log v5
+1	346	1698161330664266693	/media/juncheng/Disk4T/Sim-Grasp/Sim_GraspNet/knn/build/temp.linux-x86_64-cpython-39/media/juncheng/Disk4T/Sim-Grasp/Sim_GraspNet/knn/src/cuda/knn.o	fb42736b84f15e67
+1	12041	1698161342352193434	/media/juncheng/Disk4T/Sim-Grasp/Sim_GraspNet/knn/build/temp.linux-x86_64-cpython-39/media/juncheng/Disk4T/Sim-Grasp/Sim_GraspNet/knn/src/cpu/knn_cpu.o	c5fe4b6cabb6fc1f
+1	12081	1698161342396193157	/media/juncheng/Disk4T/Sim-Grasp/Sim_GraspNet/knn/build/temp.linux-x86_64-cpython-39/media/juncheng/Disk4T/Sim-Grasp/Sim_GraspNet/knn/src/vision.o	f3435a39bca77508
