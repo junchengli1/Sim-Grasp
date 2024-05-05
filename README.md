@@ -21,6 +21,6 @@
 
 ## Grasping Candidates Annotation
 
-Use the [`two_finger_sampling_angle _aug.py`](grasp_sampling/two_finger_sampling_angle _aug.py) script to sampling grasp candidates and check collisions.
+Use the [`two_finger_sampling_angle_aug.py`](grasp_sampling/two_finger_sampling_angle_aug.py) script to sampling grasp candidates and check collisions.
 
 Use the [`grasp_simulation.py`](grasp_sampling/grasp_simulation.py) script perform dynamic evaluation.
